@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
 import { Image, Platform, StyleSheet, Text, TouchableOpacity, View, ImageBackground } from 'react-native';
 import {CompanyList} from '../components/CompanyList';
+import { StockList } from '../components/StockList';
 
 export default function StockScreen() {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Список акций</Text>
-      <CompanyList></CompanyList>
+      <StockList></StockList>
     </View>
   );
 }

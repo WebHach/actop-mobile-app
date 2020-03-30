@@ -1,6 +1,6 @@
 
 export class Model {
 
-    url = 'http://88dd6abb.ngrok.io/api';
+    url = 'http://a6603563.ngrok.io/api';
 
 }

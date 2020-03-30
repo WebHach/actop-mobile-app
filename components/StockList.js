@@ -1,22 +1,22 @@
 import React, {Component} from 'react';
 import { List, FlatList, ScrollView, RefreshControl } from 'react-native';
-import {CompanyItem} from './CompanyItem';
-import {Company} from '../models/Company';
+import { Stock } from '../models/Stock';
+import { StockItem } from './StockItem';
 
-const modelCompany = new Company();
+const modelStock = new Stock();
 
-export class CompanyList extends Component {
+export class StockList extends Component {
 
-  state = { companies: [], refreshing: false};
+  state = { stocks: [], refreshing: false};
 
   componentDidMount(){
     this.reloadCompanies();
   }
 
   reloadCompanies(successCallback = null) {
-    modelCompany.getAllCompany().then((result) => {
+    modelStock.getAllStocks().then((result) => {
       this.setState(previousState => (
-        { companies: result.data }
+        { stocks: result }
       ));
       if (typeof(successCallback) === "function") {
         successCallback();
@@ -45,8 +45,8 @@ export class CompanyList extends Component {
                 onRefresh={this._onRefresh.bind(this)}
             />
           }
-          data={this.state.companies}
-          renderItem={({ item }) => <CompanyItem name={item.name} logo={item.logo}/>}
+          data={this.state.stocks}
+          renderItem={({ item }) => <StockItem stock={item.name} logo={item.category.logo} company={item.company.name} />}
         />
     );
   }
